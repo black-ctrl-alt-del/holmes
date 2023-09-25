@@ -1,0 +1,19 @@
+[
+    {
+        "database": "",
+        "user":"",
+        "password":"",
+        "host":"",
+        "port":"",
+        "schema": "",
+        "type":"postgresql"
+    },
+    {
+        "database": "",
+        "user":"",
+        "password":"",
+        "host":"",
+        "port":"",
+        "type":"mysql"
+    }
+]
