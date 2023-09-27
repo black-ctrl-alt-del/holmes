@@ -4,9 +4,6 @@ from tabulate import tabulate
 import os
 import time
 
-configBlob = open('config.json')
-config = json.load(configBlob)
-
 '''
 Developer: Koenomatachi San
 Description: Monitoring PostgreSQL/Mysql databases.
@@ -74,10 +71,18 @@ def main():
         ██║  ██║╚██████╔╝███████╗██║ ╚═╝ ██║███████╗███████║
         ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝     ╚═╝╚══════╝╚══════╝ DATABASE INSPECTOR
         """)
+    configBlob = open('config.json')
+    config = json.load(configBlob)
     for database in config:
         if database['type'] == "postgresql":
             connectPostgreSQL(database)
        
+def verifyIfConfigFileExists():
+    verify = os.path.exists("config.json")
+    if verify == False:
+        raise ValueError('[HOLMES] ARQUIVO DE CONFIGURACAO NAO ENCONTRADO')
+
 while True:
+    verifyIfConfigFileExists()
     main();
     time.sleep(60)
